@@ -2,12 +2,12 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database import get_db
-from app.models.department import Department
-from app.models.enums import UserRole
-from app.schemas.department import DepartmentCreate, DepartmentUpdate, DepartmentRead
-from app.crud.base import CRUDBase
-from app.dependencies import get_current_user, require_role
+from backend.app.database import get_db
+from backend.app.models.department import Department
+from backend.app.models.enums import UserRole
+from backend.app.schemas.department import DepartmentCreate, DepartmentUpdate, DepartmentRead
+from backend.app.crud.base import CRUDBase
+from backend.app.dependencies import get_current_user, require_role
 
 router = APIRouter(prefix="/departments", tags=["Departments"])
 crud = CRUDBase(Department)

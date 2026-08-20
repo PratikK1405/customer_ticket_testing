@@ -1,6 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 from uuid import UUID
-from app.models.enums import TicketPriority
+from backend.app.models.enums import TicketPriority
 
 class SLAPolicyCreate(BaseModel):
     priority: TicketPriority

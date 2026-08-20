@@ -32,13 +32,14 @@ async def login(payload: LoginRequest):
     except Exception as e:
         raise HTTPException(401, str(e))
     session = res.session
-    if not session:
+    user = res.user
+    if session is None or user is None:
         raise HTTPException(401, "Invalid credentials")
     return TokenResponse(
         access_token=session.access_token,
         refresh_token=session.refresh_token,
         expires_in=session.expires_in,
-        user={"id": str(res.user.id), "email": res.user.email},
+        user={"id": str(user.id), "email": user.email},
     )
 
 @router.post("/refresh", response_model=TokenResponse)
@@ -48,11 +49,14 @@ async def refresh(payload: RefreshRequest):
     except Exception as e:
         raise HTTPException(401, str(e))
     session = res.session
+    user = res.user
+    if session is None or user is None:
+        raise HTTPException(401, "Invalid refresh token")
     return TokenResponse(
         access_token=session.access_token,
         refresh_token=session.refresh_token,
         expires_in=session.expires_in,
-        user={"id": str(res.user.id), "email": res.user.email},
+        user={"id": str(user.id), "email": user.email},
     )
 
 @router.post("/logout")

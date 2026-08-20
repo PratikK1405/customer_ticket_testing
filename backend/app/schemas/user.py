@@ -1,7 +1,7 @@
 from pydantic import BaseModel, ConfigDict, EmailStr
 from uuid import UUID
 from datetime import datetime
-from app.models.enums import UserRole
+from backend.app.models.enums import UserRole
 
 class UserRead(BaseModel):
     id: UUID

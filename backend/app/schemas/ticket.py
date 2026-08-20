@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict
 from uuid import UUID
 from datetime import datetime
 from decimal import Decimal
-from app.models.enums import TicketPriority, TicketSentiment, TicketStatus
+from backend.app.models.enums import TicketPriority, TicketSentiment, TicketStatus
 
 class TicketCreate(BaseModel):
     subject: str

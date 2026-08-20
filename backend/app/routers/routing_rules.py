@@ -2,12 +2,12 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database import get_db
-from app.models.routing_rule import RoutingRule
-from app.models.enums import UserRole
-from app.schemas.routing_rule import RoutingRuleCreate, RoutingRuleUpdate, RoutingRuleRead
-from app.crud.base import CRUDBase
-from app.dependencies import get_current_user, require_role
+from backend.app.database import get_db
+from backend.app.models.routing_rule import RoutingRule
+from backend.app.models.enums import UserRole
+from backend.app.schemas.routing_rule import RoutingRuleCreate, RoutingRuleUpdate, RoutingRuleRead
+from backend.app.crud.base import CRUDBase
+from backend.app.dependencies import get_current_user, require_role
 
 router = APIRouter(prefix="/routing-rules", tags=["Routing Rules"])
 crud = CRUDBase(RoutingRule)

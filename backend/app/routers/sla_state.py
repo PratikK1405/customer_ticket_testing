@@ -2,12 +2,12 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database import get_db
-from app.models.sla_state import SLAState
-from app.models.enums import UserRole
-from app.schemas.sla_state import SLAStateCreate, SLAStateUpdate, SLAStateRead
-from app.crud.base import CRUDBase
-from app.dependencies import get_current_user, require_role
+from backend.app.database import get_db
+from backend.app.models.sla_state import SLAState
+from backend.app.models.enums import UserRole
+from backend.app.schemas.sla_state import SLAStateCreate, SLAStateUpdate, SLAStateRead
+from backend.app.crud.base import CRUDBase
+from backend.app.dependencies import get_current_user, require_role
 
 router = APIRouter(prefix="/sla-state", tags=["SLA State"])
 crud = CRUDBase(SLAState)

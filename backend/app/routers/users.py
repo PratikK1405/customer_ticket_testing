@@ -2,12 +2,12 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.database import get_db
-from app.models.user import User
-from app.models.enums import UserRole
-from app.schemas.user import UserRead, UserUpdate
-from app.crud.base import CRUDBase
-from app.dependencies import require_role
+from backend.app.database import get_db
+from backend.app.models.user import User
+from backend.app.models.enums import UserRole
+from backend.app.schemas.user import UserRead, UserUpdate
+from backend.app.crud.base import CRUDBase
+from backend.app.dependencies import require_role
 
 router = APIRouter(prefix="/users", tags=["Users"])
 crud = CRUDBase(User)
